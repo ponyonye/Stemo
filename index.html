@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stemo - Sembunyikan Pesan Rahasia dalam Emoji</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Stemo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#embed">Sembunyikan Pesan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#extract">Ekstrak Pesan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#emoji-to-image">Emoji ke Gambar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="py-5 hero-section">
+        <div class="container px-4 py-5 my-5 text-center hero-content">
+            <div class="floating">
+                <h1 class="display-3 fw-bold mb-4">Sembunyikan Pesan Rahasia Kamu Kedalam Emoji!</h1>
+            </div>
+            <div class="col-lg-10 mx-auto">
+                <p class="lead mb-5 fs-4">
+                    Selamat datang di <strong>Stemo</strong>! Platform canggih untuk menyembunyikan pesan rahasia dalam emoji 
+                    dan menyisipkannya ke dalam gambar menggunakan teknologi steganografi terdepan.
+                </p>
+                <div class="emoji-showcase">
+                    <span class="large-emoji floating">😎</span>
+                    <span class="large-emoji floating" style="animation-delay: 0.5s;">🚀</span>
+                    <span class="large-emoji floating" style="animation-delay: 1s;">💎</span>
+                    <span class="large-emoji floating" style="animation-delay: 1.5s;">🎯</span>
+                    <span class="large-emoji floating" style="animation-delay: 2s;">🔥</span>
+                </div>
+                <p class="mt-4 fs-5 text-light">
+                    Emoji-emoji yang terlihat biasa ini bisa menyimpan pesan rahasia, bahkan bisa disembunyikan dalam gambar!
+                </p>
+                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center mt-5">
+                    <a href="#embed" class="btn btn-primary-modern btn-modern btn-lg px-5">
+                        ✨ Mulai Sembunyikan Pesan
+                    </a>
+                    <a href="#extract" class="btn btn-secondary-modern btn-modern btn-lg px-5">
+                        🔍 Ekstrak Pesan Rahasia
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Embed Section -->
+    <section id="embed" class="py-5 section-with-pattern">
+        <div class="container px-4 py-5" style="position: relative; z-index: 2;">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-3">Sembunyikan Pesan Rahasia</h2>
+                    <p class="lead text-muted">Masukkan pesan rahasia Anda dan pilih emoji untuk menyembunyikannya. Pesan akan dienkripsi dan disembunyikan dalam emoji pilihan Anda!</p>
+                </div>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="modern-card">
+                        <div class="card-header-gradient">
+                            <h4 class="mb-0">Input Pesan Rahasia</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="mb-4">
+                                <label for="message" class="form-label fw-bold">Pesan Rahasia Anda:</label>
+                                <textarea class="form-control form-control-modern" id="message" rows="5" placeholder="Ketik pesan rahasia yang ingin disembunyikan..."></textarea>
+                                <small class="text-muted">Tips: Pesan maksimal 100 karakter untuk hasil terbaik</small>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Pilih Emoji Penutup Pesan:</label>
+                                <div class="emoji-selector">
+                                    <button class="emoji-btn selected" data-emoji="😎">😎</button>
+                                    <button class="emoji-btn" data-emoji="🌟">🌟</button>
+                                    <button class="emoji-btn" data-emoji="🚀">🚀</button>
+                                    <button class="emoji-btn" data-emoji="💎">💎</button>
+                                    <button class="emoji-btn" data-emoji="🔥">🔥</button>
+                                    <button class="emoji-btn" data-emoji="🎮">🎮</button>
+                                    <button class="emoji-btn" data-emoji="🍕">🍕</button>
+                                    <button class="emoji-btn" data-emoji="🌺">🌺</button>
+                                </div>
+                            </div>
+                            <button id="embedBtn" class="btn btn-secondary-modern btn-modern w-100">
+                                🔐 Sembunyikan Pesan Sekarang!
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="result-container">
+                        <h4 class="text-center mb-4">Hasil Enkripsi:</h4>
+                        <div id="embedResult" class="result-box">
+                            <p class="text-muted text-center mb-0">Emoji berisi pesan rahasia akan muncul di sini</p>
+                        </div>
+                        <div id="copySection" class="mt-4 d-none">
+                            <button id="copyBtn" class="btn btn-success btn-modern w-100 mb-3">📋 Salin ke Clipboard</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extract Section -->
+    <section id="extract" class="py-5">
+        <div class="container px-4 py-5">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-3">🔍 Ekstrak Pesan Rahasia</h2>
+                    <p class="lead text-muted">Paste emoji yang berisi pesan rahasia untuk mengekstrak dan membaca pesan tersembunyi di dalamnya!</p>
+                </div>
+            </div>
+            <div class="row g-5 justify-content-center">
+                <div class="col-lg-6">
+                    <div class="modern-card">
+                        <div class="card-header-gradient">
+                            <h4 class="mb-0">Ekstrak Pesan</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="mb-4">
+                                <label for="encodedEmoji" class="form-label fw-bold">Paste Emoji Berisi Pesan:</label>
+                                <input type="text" class="form-control form-control-modern emoji-input" id="encodedEmoji" placeholder="Paste emoji di sini...">
+                                <small class="text-muted">Paste emoji yang sudah dienkripsi dengan pesan rahasia</small>
+                            </div>
+                            <button id="extractBtn" class="btn btn-secondary-modern btn-modern w-100">
+                                🕵️ Ekstrak Pesan Rahasia!
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="result-container">
+                        <h4 class="text-center mb-4">Pesan Rahasia:</h4>
+                        <div id="extractResult" class="result-box">
+                            <p class="text-muted text-center mb-0">Pesan rahasia yang diekstrak akan muncul di sini</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emoji to Image Section -->
+    <section id="emoji-to-image" class="py-5 emoji-to-image-section">
+        <div class="container px-4 py-5">
+            <div class="section-card">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">Emoji --> Gambar Steganografi</h2>
+                    <p class="fs-5">Sembunyikan emoji berisi pesan dalam gambar atau ekstrak emoji dari gambar menggunakan teknologi steganografi canggih</p>
+                </div>
+                
+                <!-- Tab Navigation -->
+                <ul class="nav nav-pills nav-fill mb-5" id="imageStegTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="embed-tab" data-bs-toggle="pill" data-bs-target="#embed-pane" type="button" role="tab">
+                            📥 Sembunyikan Emoji ke Gambar
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="extract-tab" data-bs-toggle="pill" data-bs-target="#extract-pane" type="button" role="tab">
+                            📤 Ekstrak Emoji dari Gambar
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="imageStegTabContent">
+                    <!-- Embed Tab -->
+                    <div class="tab-pane fade show active" id="embed-pane" role="tabpanel">
+                        <h4 class="text-center mb-4">Sembunyikan Emoji dalam Gambar</h4>
+                        <div class="row g-4 py-4">
+                            <div class="col-lg-6">
+                                <div class="mb-4">
+                                    <label for="emojiWithMessageInput" class="form-label fw-bold">Masukan Emoji Berisi Pesan:</label>
+                                    <input type="text" class="form-control form-control-modern emoji-input bg-light text-dark" id="emojiWithMessageInput" placeholder="Paste emoji yang sudah dienkripsi...">
+                                    <small class="form-text text-light">Paste emoji yang sudah berisi pesan rahasia dari tahap sebelumnya</small>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">📷 Upload Gambar Penutup:</label>
+                                    <div class="file-upload-container" id="imageUploadContainer">
+                                        <input type="file" id="imageFileInput" class="file-input" accept="image/*">
+                                        <div id="uploadPrompt">
+                                            <div style="font-size: 4rem; margin-bottom: 1rem;">📁</div>
+                                            <h5 class="mb-3">Klik untuk upload gambar</h5>
+                                            <p class="mb-2">atau drag & drop gambar di sini</p>
+                                            <small class="text-muted">Mendukung JPG, PNG(maksimal 5MB)</small>
+                                        </div>
+                                        <div id="imagePreview" class="d-none">
+                                            <img id="previewImg" class="preview-image" alt="Preview">
+                                            <p class="mt-3 mb-0 text-muted">Klik untuk mengganti gambar</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <button id="embedToImageBtn" class="btn btn-gradient btn-lg w-100 pulse" disabled>
+                                    🔐 Sembunyikan Emoji ke Gambar
+                                </button>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="result-container bg-white text-dark">
+                                    <h4 class="text-center text-primary mb-4">📸 Hasil Gambar</h4>
+                                    <div id="imageEmbedResult" class="result-box">
+                                        <p class="text-muted text-center">Gambar dengan emoji tersembunyi akan muncul di sini</p>
+                                    </div>
+                                    <div id="imageDownloadSection" class="mt-4 d-none text-center">
+                                        <button id="downloadImageBtn" class="btn btn-success btn-modern mb-3">
+                                            📥 Download Gambar
+                                        </button>
+                                        <div class="alert alert-info">
+                                            <strong>🎉 Berhasil!</strong> Emoji pesan sudah tersembunyi di dalam gambar ini!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Extract Tab -->
+                    <div class="tab-pane fade" id="extract-pane" role="tabpanel">
+                        <h4 class="text-center mb-4">🕵️ Ekstrak Emoji dari Gambar</h4>
+                        <div class="row g-4 py-4">
+                            <div class="col-lg-6">
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">🔍 Upload Gambar Berisi Emoji:</label>
+                                    <div class="file-upload-container" id="extractImageUploadContainer">
+                                        <input type="file" id="extractImageFileInput" class="file-input" accept="image/*">
+                                        <div id="extractUploadPrompt">
+                                            <div style="font-size: 4rem; margin-bottom: 1rem;">🔍</div>
+                                            <h5 class="mb-3">Klik untuk upload gambar</h5>
+                                            <p class="mb-2">yang berisi emoji tersembunyi</p>
+                                            <small class="text-muted">Mendukung JPG, PNG, GIF (maksimal 5MB)</small>
+                                        </div>
+                                        <div id="extractImagePreview" class="d-none">
+                                            <img id="extractPreviewImg" class="preview-image" alt="Preview">
+                                            <p class="mt-3 mb-0 text-muted">Klik untuk mengganti gambar</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <button id="extractFromImageBtn" class="btn btn-gradient btn-lg w-100 pulse" disabled>
+                                    🔍 Ekstrak Emoji dari Gambar
+                                </button>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="result-container bg-white text-dark">
+                                    <h4 class="text-center text-primary mb-4">🎯 Hasil Ekstraksi</h4>
+                                    <div id="imageExtractResult" class="result-box">
+                                        <p class="text-muted text-center">Emoji yang diekstrak akan muncul di sini</p>
+                                    </div>
+                                    <div id="extractedEmojiSection" class="mt-4 d-none">
+                                        <div class="alert alert-info">
+                                            <strong>📋 Langkah 2:</strong> Salin emoji di atas dan paste ke bagian "Ekstrak Pesan" untuk mengungkap pesan rahasianya!
+                                        </div>
+                                        <div class="text-center">
+                                            <button id="copyExtractedEmojiBtn" class="btn btn-primary btn-modern mb-2">
+                                                📋 Salin Emoji
+                                            </button>
+                                            <a href="#extract" class="btn btn-outline-primary btn-modern">
+                                                ➡️ Ke Ekstrak Pesan
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info mt-5" role="alert" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white;">
+                    <strong>Cara Kerja:</strong> Fitur ini mengambil emoji yang sudah berisi pesan rahasia (dibuat di bagian "Sembunyikan Pesan" di atas) dan menyembunyikannya ke dalam gambar biasa menggunakan steganografi. Gambar hasil terlihat normal tapi sebenarnya berisi data emoji tersembunyi di dalam pikselnya.
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer-modern py-4">
+        <div class="container">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Stemo - Steganografi Emoji</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+</html>
